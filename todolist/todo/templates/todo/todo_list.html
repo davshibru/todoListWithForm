@@ -1,0 +1,46 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+	<style type="text/css">
+        	.done{
+        		background: #34ee19;
+        	}
+        	.cancer{
+        		background: #ff0000;
+        	}
+        	.doing{
+        		background: #f8ff00
+        	}
+    </style>
+
+
+    {% for t in todo %}
+
+        {% if t.status == "doing" %}
+  		<div class="doing">
+  			<h1><a href="{% url 'todo_detail' pk=t.pk %}">{{t.action}} </a></h1>
+  			<p>status - {{t.status}}</p>
+  		</div>
+		
+    	{% endif %}
+
+    	{% if t.status == "done" %}
+  		<div class="done">
+  			<h1><a href="{% url 'todo_detail' pk=t.pk %}">{{t.action}} </a></h1>
+  			<p>status - {{t.status}}</p>
+  		</div>
+		
+    	{% endif %}
+
+    	{% if t.status == "cancer" %}
+  		<div class="cancer">
+  			<h1><a href="{% url 'todo_detail' pk=t.pk %}">{{t.action}} </a></h1>
+  			<p>status - {{t.status}}</p>
+  		</div>
+		
+    	{% endif %}
+
+
+		<br/>
+	{% endfor %}
+{% endblock %}
